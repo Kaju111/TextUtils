@@ -11,10 +11,12 @@ function TextFrom(props) {
   const onClickHandler = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Convert to uppercase","success")
   };
   const ClickHandler = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Convert to lowercase","success")
   };
   const ClearHandler = () => {
     let newText = ("");
@@ -40,6 +42,7 @@ function TextFrom(props) {
             onChange={onChangeHandler}
             id="myBox"
             rows="8"
+            
           ></textarea>
         </div>
 
@@ -69,7 +72,7 @@ function TextFrom(props) {
       <div className="container my-3"   style={{color: props.mode === "dark" ? "white" : "black"}}>
         <h1>Your text summary</h1>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {text.split(" ").filter(i => i !=="").length} words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} minutes read</p>
         <h2>Preview</h2>

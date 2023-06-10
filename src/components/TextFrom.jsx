@@ -29,13 +29,15 @@ function TextFrom(props) {
     console.log("ho geya");
   });
 
+  
+
   return (
     <>
-      <div className="container my-3"  style={{color: props.mode === "dark" ? "white" : "black"}}>
+      <div className="container my-3 my-1"  style={{color: props.mode === "dark" ? "white" : "black"}}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
-            style={{backgroundColor: props.mode === "dark" ? "gray" : "white",
+            style={{backgroundColor: props.mode === "dark" ? "#0d3571" : "white",
           color:props.mode === "dark" ? "white" : "black"}}
             className="form-control"
             value={text}
@@ -47,21 +49,24 @@ function TextFrom(props) {
         </div>
 
         <button
-          className="btn btn-primary"
+          disabled={text.length===0}
+          className="btn btn-primary mx-2 my-1"
           onClick={onClickHandler}
           onChange={onChangeHandler}
         >
           Convert to uppercase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          disabled={text.length===0}
+          className= "btn btn-primary mx-2 my-1"
           onClick={ClickHandler}
           onChange={onChangeHandler}
         >
           Convert to lowercase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          disabled={text.length===0}
+          className="btn btn-primary mx-2 my-1"
           onClick={ClearHandler}
           onChange={onChangeHandler}
         >
@@ -76,7 +81,7 @@ function TextFrom(props) {
         </p>
         <p>{0.008 * text.split(" ").length} minutes read</p>
         <h2>Preview</h2>
-        <p>{text.length>0?text:"Enter something in the textbox above to preview it here"}</p>
+        <p>{text.length>0?text:"Nothing to preview!"}</p>
       </div>
     </>
   );

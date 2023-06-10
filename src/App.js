@@ -29,11 +29,25 @@ function App() {
     },1000)
   }
 
-  const toggleMode = () =>{
+  const removeBodyClasses = () =>{
+    document.body.classList.remove("bg-light")
+    document.body.classList.remove("bg-dark")
+    document.body.classList.remove("bg-primary")
+    document.body.classList.remove("bg-success")
+    document.body.classList.remove("bg-warning")
+    document.body.classList.remove("bg-danger")
+  }
+  
+  const toggleMode = (cls) => { removeBodyClasses()
+  document.body.classList.add('bg-'+cls)
+    
+  }
+
+  const toggle = () =>{
     if(mode === "light"){
     setMode ("dark")
     setText("Enable light mode")
-    document.body.style.backgroundColor = "gray";
+    document.body.style.backgroundColor = "#0f3266";
     showAlert("Dark mode has been enable","success")
     // document.text.style.color = "white";
       
@@ -53,7 +67,7 @@ function App() {
 
       <Routes>
 
-          <Route path="/about" element={<About toggleMode={toggleMode} mode={mode}/>}/>
+          <Route path="/about" element={<About toggleMode={toggleMode} toggle={toggle} mode={mode}/>}/>
            
           <Route path="/" element={<TextFrom heading="Enter the text analyze below" showAlert={showAlert} mode={mode} />}/>
      
